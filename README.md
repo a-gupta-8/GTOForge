@@ -1,2 +1,2 @@
 # GTOForge
-A Poker GTO Solver.
+Aa Poker GTO Solver.
