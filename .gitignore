@@ -1,0 +1,12 @@
+
+# Build output
+/build/
+/obj/
+/*.o
+/*.obj
+/*.exe
+/*.out
+
+# MacOS system files
+.DS_Store
+
