@@ -61,30 +61,31 @@ void initializeDeck() {
     DECK[51] = CK;
 }
 
-std::stack<int> shuffleDeck() {
-    // Get a time-based seed
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-
-    // Use the seed to initialize a random engine
-    std::mt19937 engine(seed);
-
-    // Shuffle the deck using std::shuffle
-    std::shuffle(std::begin(DECK), std::end(DECK), engine);
-
-    // create a temp vector to randomize indexes
-    std::vector<int> indices(52);
-    for (int i = 0; i < 52; ++i) {
-        indices[i] = i;
-    }
-
-    // Seed with time
-    std::shuffle(indices.begin(), indices.end(), std::default_random_engine(seed));
-
-    // Push shuffled numbers onto stack
-    std::stack<int> s;
-    for (int num : indices) {
-        s.push(num);
-    }
-
-    return s;
-}
+// commenting out this functionality. (Explained in the header file)
+// std::stack<int> shuffleDeck() {
+//     // Get a time-based seed
+//     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+//
+//     // Use the seed to initialize a random engine
+//     std::mt19937 engine(seed);
+//
+//     // Shuffle the deck using std::shuffle
+//     std::shuffle(std::begin(DECK), std::end(DECK), engine);
+//
+//     // create a temp vector to randomize indexes
+//     std::vector<int> indices(52);
+//     for (int i = 0; i < 52; ++i) {
+//         indices[i] = i;
+//     }
+//
+//     // Seed with time
+//     std::shuffle(indices.begin(), indices.end(), std::default_random_engine(seed));
+//
+//     // Push shuffled numbers onto stack
+//     std::stack<int> s;
+//     for (int num : indices) {
+//         s.push(num);
+//     }
+//
+//     return s;
+// }
