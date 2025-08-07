@@ -24,12 +24,14 @@ A command-line GTO (Game Theory Optimal) poker solver built in C++. This tool si
 1. **Compile the project**
 
 ```bash
-g++ -std=c++17 -o solver main.cpp
+make
 ```
 
 2. Run the Program
 
+```bash
 ./build/GTOForger
+```
 
 3. Interactively set the hand scenario:
 
