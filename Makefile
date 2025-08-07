@@ -2,6 +2,7 @@
 # Compiler and flags
 CXX := g++
 CXXFLAGS := -std=c++17 -Iinclude -Wall -Wextra -O2
+LDFLAGS := -lncurses
 
 # File paths
 SRC_DIR := src
@@ -18,7 +19,7 @@ all: $(TARGET)
 
 # Link object files to create the executable
 $(TARGET): $(OBJS)
-	$(CXX) $(OBJS) -o $@
+	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
 
 # Compile source files to object files
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BUILD_DIR)
