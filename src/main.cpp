@@ -1,5 +1,7 @@
 #include <string>
 #include <ncurses.h>
+#include <Terminal.h>
+
 int main() {
 
 
@@ -10,13 +12,7 @@ int main() {
 
   //   Banner
     printw("%s\n", GTOBanner());
-
-    WINDOW *Wind = newwin(4,30, 20, 10);
-    refresh();
-
-    wprintw(Wind, "HELLO");
-    wrefresh(Wind);
-
+    printw("%s\n", OptionMenu());
   //   Main Menu
     refresh();              // Update the screen with what we printed
     getch();                // Wait for a key press so we can see output
