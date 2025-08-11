@@ -2,8 +2,7 @@
 #include <ncurses.h>
 #include <TerminalUI.h>
 
-
-const char* GTOBanner() {
+const char* GTOForgeBanner() {
     static const std::string banner = R"(
 _____________/\\\\\\\\\\\\__/\\\\\\\\\\\\\\\_____/\\\\\_______/\\\\\\\\\\\\\\\____/\\\\\_________/\\\\\\\\\_________/\\\\\\\\\\\\__/\\\\\\\\\\\\\\\________________
 ___________/\\\//////////__\///////\\\/////____/\\\///\\\____\/\\\///////////___/\\\///\\\_____/\\\///////\\\_____/\\\//////////__\/\\\///////////__________________
@@ -18,12 +17,38 @@ _________________\////////////__________\///___________\/////_______\///________
   return banner.c_str();
 }
 
-const char* OptionMenu() {
-  static const std::string menu = R"(
-  Single Hand Optimizer
-  Game Base Optimizer
-  Info
-  )"
-  return menu.c_str();
+const char* SHOOption() {
+  static const std::string SHO = "Single Hand Optimizer";
+  return SHO.c_str();
+}
+
+const char* GBOOption() {
+  static const std::string GBO = "Game Based Optimizer";
+  return GBO.c_str();
+}
+
+const char* InformationOption() {
+  static const std::string Info = "Info";
+  return Info.c_str();
+}
+
+void PrintMenu() {
+  //   Banner
+    printw("%s\n", GTOForgeBanner());
+
+  // Main Menu
+    move(15, 30);
+    attron(A_REVERSE);
+    printw("%s\n", SHOOption());
+    attroff(A_REVERSE);
+    move(16, 30);
+    printw("%s\n", GBOOption());
+    move(17, 30);
+    printw("%s\n", InformationOption());
+
+    getch();
+    move(16, 30);
+    chgat(-1, A_REVERSE, 0, NULL);
+
 }
 

@@ -1,6 +1,6 @@
 #include <string>
 #include <ncurses.h>
-#include <Terminal.h>
+#include <TerminalUI.h>
 
 int main() {
 
@@ -9,14 +9,12 @@ int main() {
     initscr();              // Start ncurses mode
     noecho();               // Don't show typed input
     cbreak();               // Immediate input (no Enter needed)
-
-  //   Banner
-    printw("%s\n", GTOBanner());
-    printw("%s\n", OptionMenu());
-  //   Main Menu
+  
+    PrintMenu();
     refresh();              // Update the screen with what we printed
     getch();                // Wait for a key press so we can see output
 
+  // End ncurses and Program
     endwin();               // End ncurses mode
     return 0;
 }
