@@ -10,7 +10,16 @@ int main() {
  
   // Display Menu and Enable option toggle
     PrintMenu();
-    ToggleOptions();
+    int option = ToggleOptions();
+
+  // Start Mode
+    if (option == 1) {
+      StartSHO();
+    } else if (option == 2) {
+      startGBO();
+    } else if (option == 3) {
+      ShowInformation();
+    }
 
     return 0;
 }

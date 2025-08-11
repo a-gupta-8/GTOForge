@@ -56,7 +56,19 @@ void PrintMenu() {
     refresh();
 }
 
-void ToggleOptions() {
+void StartSHO() {
+  // Stub
+}
+
+void StartGBO() {
+  // Stub
+}
+
+void ShowInformation() {
+  // Stub
+}
+
+int ToggleOptions() {
   // Highlight first option as current
     move(MenuStartPosY, MenuStartPosX);
     chgat(strlen(SHOOption()), A_REVERSE, 0, NULL);
@@ -65,7 +77,27 @@ void ToggleOptions() {
     int SelectedIndex = 1;
     int CharPressed = getch();
     while (true) {
-      if (CharPressed == 'j' && SelectedIndex == 1) {
+
+      if (CharPressed == QUIT) {
+        endwin();
+        break;
+      }
+
+      if (CharPressed == '\n') {
+        switch(SelectedIndex) {
+          case 1:
+            return 1;
+          case 2:
+            return 2;
+          case 3:
+            return 3;
+          default:
+            endwin();
+            break;
+        }
+      }
+
+      if (CharPressed == DOWN && SelectedIndex == 1) {
         SelectedIndex = 2;
 
         move(MenuStartPosY, MenuStartPosX);
@@ -77,7 +109,7 @@ void ToggleOptions() {
         refresh();
       }
 
-      else if (CharPressed == 'j' && SelectedIndex == 2) {
+      else if (CharPressed == DOWN && SelectedIndex == 2) {
         SelectedIndex = 3;
 
         move(MenuStartPosY + 1, MenuStartPosX);
@@ -89,7 +121,7 @@ void ToggleOptions() {
         refresh();
       }
 
-      if (CharPressed == 'k' && SelectedIndex == 3) {
+      if (CharPressed == UP && SelectedIndex == 3) {
         SelectedIndex = 2;
 
         move(MenuStartPosY + 2, MenuStartPosX);
@@ -101,7 +133,7 @@ void ToggleOptions() {
         refresh();
       }
 
-      else if (CharPressed == 'k' && SelectedIndex == 2) {
+      else if (CharPressed == UP && SelectedIndex == 2) {
         SelectedIndex = 1;
 
         move(MenuStartPosY + 1, MenuStartPosX);
@@ -113,14 +145,11 @@ void ToggleOptions() {
         refresh();
       }
 
-      if (CharPressed == 'q') {
-        endwin();
-        break;
-      }
-
       CharPressed = getch();
 
       refresh();
     }
+
+    return 0;
 }
 
