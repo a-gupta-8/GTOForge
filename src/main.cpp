@@ -1,4 +1,4 @@
-#include <string>
+#include <string.h>
 #include <ncurses.h>
 #include <TerminalUI.h>
 
@@ -6,15 +6,11 @@ int main() {
 
 
   //  Initialize ncurses window
-    initscr();              // Start ncurses mode
-    noecho();               // Don't show typed input
-    cbreak();               // Immediate input (no Enter needed)
-  
+    InitializeNCurses();
+ 
+  // Display Menu and Enable option toggle
     PrintMenu();
-    refresh();              // Update the screen with what we printed
-    getch();                // Wait for a key press so we can see output
+    ToggleOptions();
 
-  // End ncurses and Program
-    endwin();               // End ncurses mode
     return 0;
 }

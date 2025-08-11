@@ -1,6 +1,7 @@
 
 #include <ncurses.h>
 #include <TerminalUI.h>
+#include <algorithm>
 
 const char* GTOForgeBanner() {
     static const std::string banner = R"(
@@ -32,23 +33,94 @@ const char* InformationOption() {
   return Info.c_str();
 }
 
+void InitializeNCurses() {
+    initscr();              // Start ncurses mode
+    noecho();               // Don't show typed input
+    cbreak();               // Immediate input (no Enter needed)
+}
+
 void PrintMenu() {
   //   Banner
     printw("%s\n", GTOForgeBanner());
 
   // Main Menu
-    move(15, 30);
-    attron(A_REVERSE);
+    move(MenuStartPosY, MenuStartPosX);
     printw("%s\n", SHOOption());
-    attroff(A_REVERSE);
-    move(16, 30);
+
+    move(MenuStartPosY + 1, MenuStartPosX);
     printw("%s\n", GBOOption());
-    move(17, 30);
+
+    move(MenuStartPosY + 2, MenuStartPosX);
     printw("%s\n", InformationOption());
+    
+    refresh();
+}
 
-    getch();
-    move(16, 30);
-    chgat(-1, A_REVERSE, 0, NULL);
+void ToggleOptions() {
+  // Highlight first option as current
+    move(MenuStartPosY, MenuStartPosX);
+    chgat(strlen(SHOOption()), A_REVERSE, 0, NULL);
 
+  // Scroll through options logic
+    int SelectedIndex = 1;
+    int CharPressed = getch();
+    while (true) {
+      if (CharPressed == 'j' && SelectedIndex == 1) {
+        SelectedIndex = 2;
+
+        move(MenuStartPosY, MenuStartPosX);
+        chgat(strlen(SHOOption()), A_NORMAL, 0, NULL);
+        refresh();
+
+        move(MenuStartPosY + 1, MenuStartPosX);
+        chgat(strlen(GBOOption()), A_REVERSE, 0, NULL);
+        refresh();
+      }
+
+      else if (CharPressed == 'j' && SelectedIndex == 2) {
+        SelectedIndex = 3;
+
+        move(MenuStartPosY + 1, MenuStartPosX);
+        chgat(strlen(GBOOption()), A_NORMAL, 0, NULL);
+        refresh();
+
+        move(MenuStartPosY + 2, MenuStartPosX);
+        chgat(strlen(InformationOption()), A_REVERSE, 0, NULL);
+        refresh();
+      }
+
+      if (CharPressed == 'k' && SelectedIndex == 3) {
+        SelectedIndex = 2;
+
+        move(MenuStartPosY + 2, MenuStartPosX);
+        chgat(strlen(InformationOption()), A_NORMAL, 0, NULL);
+        refresh();
+
+        move(MenuStartPosY + 1, MenuStartPosX);
+        chgat(strlen(GBOOption()), A_REVERSE, 0, NULL);
+        refresh();
+      }
+
+      else if (CharPressed == 'k' && SelectedIndex == 2) {
+        SelectedIndex = 1;
+
+        move(MenuStartPosY + 1, MenuStartPosX);
+        chgat(strlen(GBOOption()), A_NORMAL, 0, NULL);
+        refresh();
+
+        move(MenuStartPosY, MenuStartPosX);
+        chgat(strlen(SHOOption()), A_REVERSE, 0, NULL);
+        refresh();
+      }
+
+      if (CharPressed == 'q') {
+        endwin();
+        break;
+      }
+
+      CharPressed = getch();
+
+      refresh();
+    }
 }
 
