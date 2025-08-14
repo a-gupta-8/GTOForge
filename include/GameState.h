@@ -3,6 +3,7 @@
 #include <string>
 #include "decl.h"
 #include "Player.h"
+#include <vector>
 
 class GameState {
   public:
@@ -13,4 +14,4 @@ class GameState {
     int hero_idx;
     std::vector<double> current_bets;
     std::vector<Card> remaining_deck;
-}
+};

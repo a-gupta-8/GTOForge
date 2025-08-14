@@ -8,6 +8,10 @@ constexpr int MenuStartPosY = 15;
 constexpr char QUIT = 'q';
 constexpr char UP = 'k';
 constexpr char DOWN = 'j';
+constexpr int SIDE_WIN_HEIGHT = 34;
+constexpr int SIDE_WIN_WIDTH = 40;
+constexpr int SIDE_WIN_Y = 15;
+constexpr int SIDE_WIN_X = 65;
 
 const char* GTOForgeBanner();
 

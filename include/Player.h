@@ -3,6 +3,8 @@
 #include <string>
 #include "decl.h"
 #include "Card.h"
+#include <array>
+#include <vector>
 
 class Player {
   public:
@@ -13,4 +15,4 @@ class Player {
     std::vector<ActionLog> actions;
     PlayerType player_type;
     BehaviorStats stats;
-}
+};

@@ -16,7 +16,7 @@ int main() {
     if (option == 1) {
       StartSHO();
     } else if (option == 2) {
-      startGBO();
+      StartGBO();
     } else if (option == 3) {
       ShowInformation();
     }

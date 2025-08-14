@@ -1,4 +1,5 @@
 // Declaration File for utility variables and classes
+#pragma once
 
 enum class Position {
   BTN, SM, BB, UTG, UTG1, MP, LJ, HJ, CO
