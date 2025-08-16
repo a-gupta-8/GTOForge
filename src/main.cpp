@@ -1,9 +1,6 @@
-#include <string.h>
-#include <ncurses.h>
 #include <TerminalUI.h>
 
 int main() {
-
 
   //  Initialize ncurses window
     InitializeNCurses();
@@ -14,11 +11,13 @@ int main() {
 
   // Start Mode
     if (option == 1) {
-      StartSHO();
+
+      // TODO
+      // Split into 2 screens
+      // 1 for display winow to display all players and chips stacks and community cards etc.. basically the board
+      // 1 screen to take usr commands. (in this case have a options menu to abe abble to select usr actions)
     } else if (option == 2) {
-      StartGBO();
     } else if (option == 3) {
-      ShowInformation();
     }
 
     return 0;

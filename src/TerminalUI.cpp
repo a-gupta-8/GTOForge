@@ -1,8 +1,6 @@
 
-#include <ncurses.h>
 #include <TerminalUI.h>
 #include <algorithm>
-#include <GameState.h>
 
 const char* GTOForgeBanner() {
     static const std::string banner = R"(
@@ -57,46 +55,6 @@ void PrintMenu() {
     refresh();
 }
 
-void StartSHO() {
-  // Line extension
-  move(MenuStartPosY, MenuStartPosX + strlen(SHOOption()));
-  printw("---------------------------");
- 
-  // Create Game Window
-  WINDOW* GameStateSetUpWindow = newwin(SIDE_WIN_HEIGHT, SIDE_WIN_WIDTH, SIDE_WIN_Y, SIDE_WIN_X);
-  refresh();
-
-  box(GameStateSetUpWindow, 0, 0);
-  wrefresh(GameStateSetUpWindow);
-
-  // Subwindow for msg
-  WINDOW* TxtWindow = newwin(SIDE_WIN_HEIGHT-2, SIDE_WIN_WIDTH-2, SIDE_WIN_Y+1, SIDE_WIN_X+1);
-  refresh();
-
-  wprintw(TxtWindow, "Players at table (2-9):\n");
-  wrefresh(TxtWindow);
-
-  int players = getch() - '0';
-
-  wprintw(TxtWindow, "Hero Position (0 = BTN):\n");
-  wrefresh(TxtWindow);
-
-  int position = getch() - '0';
-
-  wprintw(TxtWindow, "HEHEHEHE");
-
-  endwin();
-
-
-}
-
-void StartGBO() {
-  // Stub
-}
-
-void ShowInformation() {
-  // Stub
-}
 
 int ToggleOptions() {
   // Highlight first option as current

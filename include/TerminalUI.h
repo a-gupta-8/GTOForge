@@ -13,6 +13,12 @@ constexpr int SIDE_WIN_WIDTH = 40;
 constexpr int SIDE_WIN_Y = 15;
 constexpr int SIDE_WIN_X = 65;
 
+void InitializeNCurses();
+
+void PrintMenu();
+
+int ToggleOptions();
+
 const char* GTOForgeBanner();
 
 const char* SHOOption();
@@ -21,14 +27,4 @@ const char* GBOOption();
 
 const char* InformationOption();
 
-void StartSHO();
 
-void StartGBO();
-
-void ShowInformation();
-
-void InitializeNCurses();
-
-void PrintMenu();
-
-int ToggleOptions();

@@ -1,6 +1,9 @@
 
 # ♠️ GTO Poker Solver (C++)
 
+
+# MAJOR
+## NEED TO RESKIN AND REFACTOR - LOOK FOR GUI SOLUTIONS OR DIFFERENT FLOW
 A command-line GTO (Game Theory Optimal) poker solver built in C++. This tool simulates decision-making in No-Limit Texas Hold’em, allowing users to set up custom game states and receive detailed strategic recommendations (fold, call, raise) based on equity, stack sizes, position, and opponent hand ranges.
 
 ---
