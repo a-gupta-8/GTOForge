@@ -141,11 +141,22 @@ int ToggleOptions() {
     return 0;
 }
 
-void CreateSHOWindow() {
-  WINDOW * CommandWindow = newwin(SIDE_WIN_HEIGHT, SIDE_WIN_WIDTH, SIDE_WIN_Y, SIDE_WIN_X);
-  refresh();
-  box(CommandWindow, 0, 0);
-  wrefresh(CommandWindow);
-  getch();
+std::pair<WINDOW*, WINDOW*> CreateSHOWindow() {
+  // Create Connector
+  move(MenuStartPosY, MenuStartPosX + strlen(SHOOption()));
+  printw("--------------------------------------------------------");
 
+  WINDOW * CommandWindow = newwin(SIDE_WIN_HEIGHT, SIDE_WIN_WIDTH, SIDE_WIN_Y, SIDE_WIN_X);
+  WINDOW * MainViewWindow = newwin(MAIN_WIN_HEIGHT, MAIN_WIN_WIDTH, MAIN_WIN_Y, MAIN_WIN_X);
+  refresh();
+
+  box(CommandWindow, 0, 0);
+  box(MainViewWindow, 0, 0);
+  wrefresh(CommandWindow);
+  wrefresh(MainViewWindow);
+
+  WINDOW * CmdWin = newwin(SIDE_WIN_HEIGHT-2, SIDE_WIN_WIDTH-2, SIDE_WIN_Y+1, SIDE_WIN_X+1);
+  WINDOW * MainWin = newwin(MAIN_WIN_HEIGHT-2, MAIN_WIN_WIDTH-2, MAIN_WIN_Y+1, MAIN_WIN_X+1);
+
+  return {CmdWin, MainWin};
 }
