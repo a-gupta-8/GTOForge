@@ -160,3 +160,9 @@ std::pair<WINDOW*, WINDOW*> CreateSHOWindow() {
 
   return {CmdWin, MainWin};
 }
+
+void SHOGameState(WINDOW* CMDWINDOW) {
+  refresh();
+  //refactor toggleOPtions to be usable here as well.
+
+}

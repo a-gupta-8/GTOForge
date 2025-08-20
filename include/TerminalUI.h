@@ -33,3 +33,6 @@ const char* GBOOption();
 const char* InformationOption();
 
 std::pair<WINDOW*, WINDOW*> CreateSHOWindow();
+
+void SHOGameState(WINDOW* CMDWINDOW);
+

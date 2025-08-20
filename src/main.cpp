@@ -12,11 +12,10 @@ int main() {
   // Start Mode
     if (option == 1) {
 
-      CreateSHOWindow();
-      // TODO
-      // Split into 2 screens
-      // 1 for display winow to display all players and chips stacks and community cards etc.. basically the board
-      // 1 screen to take usr commands. (in this case have a options menu to abe abble to select usr actions)
+      WINDOW* {CmdWin, MainWin} = CreateSHOWindow();
+      
+
+
     } else if (option == 2) {
     } else if (option == 3) {
     }
