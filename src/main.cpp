@@ -12,6 +12,7 @@ int main() {
   // Start Mode
     if (option == 1) {
 
+      CreateSHOWindow();
       // TODO
       // Split into 2 screens
       // 1 for display winow to display all players and chips stacks and community cards etc.. basically the board

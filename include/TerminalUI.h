@@ -27,4 +27,4 @@ const char* GBOOption();
 
 const char* InformationOption();
 
-
+void CreateSHOWindow();

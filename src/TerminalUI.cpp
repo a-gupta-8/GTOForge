@@ -141,3 +141,11 @@ int ToggleOptions() {
     return 0;
 }
 
+void CreateSHOWindow() {
+  WINDOW * CommandWindow = newwin(SIDE_WIN_HEIGHT, SIDE_WIN_WIDTH, SIDE_WIN_Y, SIDE_WIN_X);
+  refresh();
+  box(CommandWindow, 0, 0);
+  wrefresh(CommandWindow);
+  getch();
+
+}
