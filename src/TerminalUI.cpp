@@ -56,13 +56,13 @@ void PrintMenu() {
 }
 
 
-int ToggleOptions() {
+int ToggleOptions(int startPosY, int startPosX, const std::vector<int>& optionsLen, WINDOW* window) {
   // Highlight first option as current
-    move(MenuStartPosY, MenuStartPosX);
-    chgat(strlen(SHOOption()), A_REVERSE, 0, NULL);
+    wmove(window, startPosY, startPosX);
+    wchgat(window, optionsLen[0], A_REVERSE, 0, NULL);
 
   // Scroll through options logic
-    int SelectedIndex = 1;
+    int SelectedIndex = 0;
     int CharPressed = getch();
     while (true) {
 
@@ -72,73 +72,34 @@ int ToggleOptions() {
       }
 
       if (CharPressed == '\n') {
-        switch(SelectedIndex) {
-          case 1:
-            return 1;
-          case 2:
-            return 2;
-          case 3:
-            return 3;
-          default:
-            endwin();
-            break;
-        }
+        return SelectedIndex;
       }
 
-      if (CharPressed == DOWN && SelectedIndex == 1) {
-        SelectedIndex = 2;
+      if (CharPressed == DOWN && SelectedIndex != optionsLen.size()-1) {
+        wmove(window, startPosY+SelectedIndex, startPosX);
+        wchgat(window, optionsLen[SelectedIndex], A_NORMAL, 0, NULL);
 
-        move(MenuStartPosY, MenuStartPosX);
-        chgat(strlen(SHOOption()), A_NORMAL, 0, NULL);
-        refresh();
+        SelectedIndex += 1;
 
-        move(MenuStartPosY + 1, MenuStartPosX);
-        chgat(strlen(GBOOption()), A_REVERSE, 0, NULL);
-        refresh();
+        wmove(window, startPosY+SelectedIndex, startPosX);
+        wchgat(window, optionsLen[SelectedIndex], A_REVERSE, 0, NULL);
       }
+      else if (CharPressed == UP && SelectedIndex != 0) {
+        wmove(window, startPosY+SelectedIndex, startPosX);
+        wchgat(window, optionsLen[SelectedIndex], A_NORMAL, 0, NULL);
 
-      else if (CharPressed == DOWN && SelectedIndex == 2) {
-        SelectedIndex = 3;
+        SelectedIndex -= 1;
 
-        move(MenuStartPosY + 1, MenuStartPosX);
-        chgat(strlen(GBOOption()), A_NORMAL, 0, NULL);
-        refresh();
-
-        move(MenuStartPosY + 2, MenuStartPosX);
-        chgat(strlen(InformationOption()), A_REVERSE, 0, NULL);
-        refresh();
+        wmove(window, startPosY+SelectedIndex, startPosX);
+        wchgat(window, optionsLen[SelectedIndex], A_REVERSE, 0, NULL);
       }
-
-      if (CharPressed == UP && SelectedIndex == 3) {
-        SelectedIndex = 2;
-
-        move(MenuStartPosY + 2, MenuStartPosX);
-        chgat(strlen(InformationOption()), A_NORMAL, 0, NULL);
-        refresh();
-
-        move(MenuStartPosY + 1, MenuStartPosX);
-        chgat(strlen(GBOOption()), A_REVERSE, 0, NULL);
-        refresh();
-      }
-
-      else if (CharPressed == UP && SelectedIndex == 2) {
-        SelectedIndex = 1;
-
-        move(MenuStartPosY + 1, MenuStartPosX);
-        chgat(strlen(GBOOption()), A_NORMAL, 0, NULL);
-        refresh();
-
-        move(MenuStartPosY, MenuStartPosX);
-        chgat(strlen(SHOOption()), A_REVERSE, 0, NULL);
-        refresh();
-      }
-
-      CharPressed = getch();
 
       refresh();
+
+      CharPressed = getch();
     }
 
-    return 0;
+    return -1;
 }
 
 std::pair<WINDOW*, WINDOW*> CreateSHOWindow() {

@@ -7,12 +7,14 @@ int main() {
  
   // Display Menu and Enable option toggle
     PrintMenu();
-    int option = ToggleOptions();
+    std::vector<int> MenuOptionSizes = {static_cast<int>(strlen(SHOOption())), static_cast<int>(strlen(GBOOption())), static_cast<int>(strlen(InformationOption()))};
+    int option = ToggleOptions(MenuStartPosY, MenuStartPosX, MenuOptionSizes, stdscr);
+
 
   // Start Mode
     if (option == 1) {
 
-      WINDOW* {CmdWin, MainWin} = CreateSHOWindow();
+      // WINDOW* {CmdWin, MainWin} = CreateSHOWindow();
       
 
 

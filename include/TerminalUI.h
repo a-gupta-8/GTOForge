@@ -3,6 +3,7 @@
 #include <ncurses.h>
 #include <string>
 #include <utility>
+#include <vector>
 
 constexpr int MenuStartPosX = 30;
 constexpr int MenuStartPosY = 15;
@@ -22,7 +23,7 @@ void InitializeNCurses();
 
 void PrintMenu();
 
-int ToggleOptions();
+int ToggleOptions(int startPosY, int startPosX, const std::vector<int>& optionsLen, WINDOW* window);
 
 const char* GTOForgeBanner();
 
