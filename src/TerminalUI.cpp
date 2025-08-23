@@ -124,6 +124,8 @@ std::pair<WINDOW*, WINDOW*> CreateSHOWindow() {
 
 void SHOGameState(WINDOW* CMDWINDOW) {
   refresh();
-  //refactor toggleOPtions to be usable here as well.
+  wprintw(CMDWINDOW, "DASDAS");
+  wrefresh(CMDWINDOW);
+  getch();
 
 }

@@ -10,16 +10,14 @@ int main() {
     std::vector<int> MenuOptionSizes = {static_cast<int>(strlen(SHOOption())), static_cast<int>(strlen(GBOOption())), static_cast<int>(strlen(InformationOption()))};
     int option = ToggleOptions(MenuStartPosY, MenuStartPosX, MenuOptionSizes, stdscr);
 
-
   // Start Mode
-    if (option == 1) {
+    if (option == 0) {
 
-      // WINDOW* {CmdWin, MainWin} = CreateSHOWindow();
-      
+      auto [CmdWin, MainWin] = CreateSHOWindow();
+      SHOGameState(CmdWin);
 
-
+    } else if (option == 1) {
     } else if (option == 2) {
-    } else if (option == 3) {
     }
 
     return 0;
