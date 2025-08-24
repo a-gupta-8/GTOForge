@@ -35,5 +35,11 @@ const char* InformationOption();
 
 std::pair<WINDOW*, WINDOW*> CreateSHOWindow();
 
+const char* CMDOptions();
+
+const char* CMDSetBoard();
+
+const char* CMDHeroPos();
+
 void SHOGameState(WINDOW* CMDWINDOW);
 

@@ -1,4 +1,3 @@
-
 #include <TerminalUI.h>
 #include <algorithm>
 
@@ -122,8 +121,24 @@ std::pair<WINDOW*, WINDOW*> CreateSHOWindow() {
   return {CmdWin, MainWin};
 }
 
+const char* CMDOptions() {
+  static const std::string CMDTitle = "Set Game State before starting optimizer:";
+  return CMDTitle.c_str();
+}
+
+const char* CMDSetBoard() {
+  static const std::string CMDBoard = "  - Set Board";
+  return CMDBoard.c_str();
+}
+
+const char* CMDHeroPos() {
+  static const std::string CMDHeroPos = "  - Set Hero Position";
+  return CMDHeroPos.c_str();
+}
+
 void SHOGameState(WINDOW* CMDWINDOW) {
   refresh();
+
   wprintw(CMDWINDOW, "DASDAS");
   wrefresh(CMDWINDOW);
   getch();
