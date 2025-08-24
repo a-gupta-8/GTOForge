@@ -39,7 +39,13 @@ const char* CMDOptions();
 
 const char* CMDSetBoard();
 
-const char* CMDHeroPos();
+const char* CMDActionOn();
+
+const char* CMDHand();
+
+const char* CMDPotSize();
+
+const char* CMDBetSize();
 
 void SHOGameState(WINDOW* CMDWINDOW);
 

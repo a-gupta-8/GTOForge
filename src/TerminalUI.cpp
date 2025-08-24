@@ -122,7 +122,7 @@ std::pair<WINDOW*, WINDOW*> CreateSHOWindow() {
 }
 
 const char* CMDOptions() {
-  static const std::string CMDTitle = "Set Game State before starting optimizer:";
+  static const std::string CMDTitle = "Set Game State before starting\noptimizer:";
   return CMDTitle.c_str();
 }
 
@@ -131,16 +131,40 @@ const char* CMDSetBoard() {
   return CMDBoard.c_str();
 }
 
-const char* CMDHeroPos() {
-  static const std::string CMDHeroPos = "  - Set Hero Position";
-  return CMDHeroPos.c_str();
+const char* CMDActionOn() {
+  static const std::string CMDActionOn = "  - First To Act";
+  return CMDActionOn.c_str();
 }
+
+const char* CMDHand() {
+  static const std::string CMDHand = "  - Set Hero Hand";
+  return CMDHand.c_str();
+}
+
+const char* CMDPotSize() {
+  static const std::string CMDPotSize = "  - Set Pot Size";
+  return CMDPotSize.c_str();
+}
+
+const char* CMDBetSize() {
+  static const std::string CMDBetSize = "  - Set Bet Size";
+  return CMDBetSize.c_str();
+}
+
 
 void SHOGameState(WINDOW* CMDWINDOW) {
   refresh();
 
-  wprintw(CMDWINDOW, "DASDAS");
+  wprintw(CMDWINDOW, "%s\n", CMDOptions());
+  wprintw(CMDWINDOW, "%s\n", CMDSetBoard());
+  wprintw(CMDWINDOW, "%s\n", CMDActionOn());
+  wprintw(CMDWINDOW, "%s\n", CMDHand());
+  wprintw(CMDWINDOW, "%s\n", CMDPotSize());
+  wprintw(CMDWINDOW, "%s\n", CMDBetSize());
   wrefresh(CMDWINDOW);
+
+  const std::vector<int> ba = {5, 5, 5, 5, 5};
+  ToggleOptions(2, 3, ba, CMDWINDOW);
   getch();
 
 }
