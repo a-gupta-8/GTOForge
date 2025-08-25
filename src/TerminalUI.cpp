@@ -59,6 +59,7 @@ int ToggleOptions(int startPosY, int startPosX, const std::vector<int>& optionsL
   // Highlight first option as current
     wmove(window, startPosY, startPosX);
     wchgat(window, optionsLen[0], A_REVERSE, 0, NULL);
+    wrefresh(window);
 
   // Scroll through options logic
     int SelectedIndex = 0;
@@ -93,7 +94,7 @@ int ToggleOptions(int startPosY, int startPosX, const std::vector<int>& optionsL
         wchgat(window, optionsLen[SelectedIndex], A_REVERSE, 0, NULL);
       }
 
-      refresh();
+      wrefresh(window);
 
       CharPressed = getch();
     }
@@ -163,8 +164,8 @@ void SHOGameState(WINDOW* CMDWINDOW) {
   wprintw(CMDWINDOW, "%s\n", CMDBetSize());
   wrefresh(CMDWINDOW);
 
-  const std::vector<int> ba = {5, 5, 5, 5, 5};
-  ToggleOptions(2, 3, ba, CMDWINDOW);
+  std::vector<int> CMDMenuOptionsLen = {static_cast<int>(strlen(CMDSetBoard()))-4, static_cast<int>(strlen(CMDActionOn()))-4, static_cast<int>(strlen(CMDHand()))-4, static_cast<int>(strlen(CMDPotSize()))-4, static_cast<int>(strlen(CMDBetSize()))-4};
+  ToggleOptions(2, 4, CMDMenuOptionsLen, CMDWINDOW);
   getch();
 
 }
