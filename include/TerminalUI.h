@@ -47,5 +47,7 @@ const char* CMDPotSize();
 
 const char* CMDBetSize();
 
+const char* CMDSubmit();
+
 void SHOGameState(WINDOW* CMDWINDOW);
 
