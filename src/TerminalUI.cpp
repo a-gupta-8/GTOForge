@@ -171,9 +171,42 @@ void SHOGameState(WINDOW* CMDWINDOW) {
 
   std::vector<int> CMDMenuOptionsLen = {static_cast<int>(strlen(CMDSetBoard()))-4, static_cast<int>(strlen(CMDActionOn()))-4, static_cast<int>(strlen(CMDHand()))-4, static_cast<int>(strlen(CMDPotSize()))-4, static_cast<int>(strlen(CMDBetSize()))-4, static_cast<int>(strlen(CMDSubmit()))-4};
   int SelectedOption = ToggleOptions(2, 4, CMDMenuOptionsLen, CMDWINDOW);
-  // TODO create loop to constantly ask for game state option until user enters all the needed game state (maybe delegate input handling and game state update to another function)
+
   while (true) {
     int SelectedOption = ToggleOptions(2, 4, CMDMenuOPtionsLen, CMDWINDOW);
+
+    switch (SelectedOption) {
+      case 0:
+        // clear text;
+        // write board question;
+        // take board input;
+        // verify input;
+        // save to game state
+        break;
+      case 1:
+        // clear text;
+        // ...
+        // save to game state
+        break;
+      case 2:
+        // clear text;
+        // ...
+        // save to game state
+        break;
+      case 3:
+        // clear text;
+        // ...
+        // save to game state
+        break;
+      case 4:
+        // clear text;
+        // ...
+        // save to game state
+        break;
+      case 5:
+        // return game state and call optimizer
+        break;
+    }
 
   }
 
