@@ -4,6 +4,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <GameState.h>
 
 constexpr int MenuStartPosX = 30;
 constexpr int MenuStartPosY = 15;
@@ -49,5 +50,7 @@ const char* CMDBetSize();
 
 const char* CMDSubmit();
 
-void SHOGameState(WINDOW* CMDWINDOW);
+GameState& SetBoardHandler(WINDOW* window, GameState &state);
+
+void SHOGameState(WINDOW* CMDWINDOW, GameState &state);
 

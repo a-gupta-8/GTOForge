@@ -12,9 +12,9 @@ int main() {
 
   // Start Mode
     if (option == 0) {
-
+      GameState SHOState;
       auto [CmdWin, MainWin] = CreateSHOWindow();
-      SHOGameState(CmdWin);
+      SHOGameState(CmdWin, SHOState);
 
     } else if (option == 1) {
     } else if (option == 2) {

@@ -157,7 +157,14 @@ const char* CMDSubmit() {
   return CMDSubmit.c_str();
 }
 
-void SHOGameState(WINDOW* CMDWINDOW) {
+GameState& SetBoardHandler(WINDOW* window, GameState &state) {
+  wmove(window, 15, 0);
+  wprintw(window, "DAE");
+  getch();
+  return state;
+}
+
+void SHOGameState(WINDOW* CMDWINDOW, GameState &state) {
   refresh();
 
   wprintw(CMDWINDOW, "%s\n", CMDOptions());
@@ -173,7 +180,7 @@ void SHOGameState(WINDOW* CMDWINDOW) {
   int SelectedOption = ToggleOptions(2, 4, CMDMenuOptionsLen, CMDWINDOW);
 
   while (true) {
-    int SelectedOption = ToggleOptions(2, 4, CMDMenuOPtionsLen, CMDWINDOW);
+    int SelectedOption = ToggleOptions(2, 4, CMDMenuOptionsLen, CMDWINDOW);
 
     switch (SelectedOption) {
       case 0:
@@ -182,6 +189,7 @@ void SHOGameState(WINDOW* CMDWINDOW) {
         // take board input;
         // verify input;
         // save to game state
+        SetBoardHandler(CMDWINDOW, state);
         break;
       case 1:
         // clear text;
